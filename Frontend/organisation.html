@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+       async function Create(){
+            const orgTitle = document.getElementById('orgTitle').value
+            const orgDesc = document.getElementById('description').value
+
+            const res = await axios.post('http://localhost:3000/organisation' , {
+                orgTitle,orgDesc
+
+            },{
+                Headers:{
+                    token : localStorage.getItem("token")
+                }
+            })
+        }
+
+        function getOrgs(){
+            const res = axios.get('http://localhost:3000/organisation',{
+                
+            })
+        }
+    </script>
 
 </head>
 <body>
@@ -14,6 +37,7 @@
             <h1 class="text-2xl mt-10">Create your organisation</h1>
             <input class="border border-white rounded-2xl p-2 pr-6 pl-6 " type="text" id="orgTitle" placeholder="Title">
             <input class="border border-white rounded-2xl p-2 pr-6 pl-6 " type="text" id="description" placeholder="description">
+            <button class="bg-white text-black rounded-xl pr-4 pl-4 p-2 cursor-pointer" onclick="Create()">Sign Up</button>
         </div>
     </div>
 </body>

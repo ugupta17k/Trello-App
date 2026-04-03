@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+         async function signIp(){
+            const username = document.getElementById("username").value
+            const password = document.getElementById("password").value
+
+            const res = await axios.post("http://localhost:3000/signin" ,{
+                username , password
+            })
+            const token = res.data.token
+            localStorage.setItem("token" , token)
+            window.location = '/organisation'
+        }
+    </script>
+</head>
+<body>
+    <div class="bg-black w-full h-screen text-white text-2xl p-2 flex flex-col gap-10 justify-center items-center">
+        <h1>Sign In page</h1>
+        <input class="border border-white rounded-xl p-2 " id="username" type="text" placeholder="Username">
+        <input class="border border-white rounded-xl p-2 " id="password" type="password" placeholder="Password">
+        <button class="bg-white text-black rounded-xl pr-4 pl-4 p-2 cursor-pointer" onclick="signIp()">Sign In</button>
+    </div>
+</body>
+</html>

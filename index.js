@@ -345,6 +345,19 @@ app.delete("/Delete-orgsMember", authmiddleware, function (req ,res) {
   
 });
 
+app.get("/", function (req, res) {
+  res.sendFile(__dirname + "/Frontend/index.html");
+});
+app.get("/signup", function (req, res) {
+  res.sendFile(__dirname + "/Frontend/signup.html");
+});
+app.get("/signin", function (req, res) {
+  res.sendFile(__dirname + "/Frontend/signin.html");
+});
+app.get("/organisation", function (req, res) {
+  res.sendFile(__dirname + "/Frontend/organisation.html");
+});
+
 app.listen(3000, () => {
   console.log("server is running on port 3000");
 });
